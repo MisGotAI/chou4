@@ -132,13 +132,27 @@
             bottom: 0;
             width: 100%;
             box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .banner-content {
+            display: flex;
+            width: calc(300%);
+            animation: scrolling 10s linear infinite;
         }
         .banner img {
             border-radius: 50%;
             width: 50px;
             height: 50px;
             object-fit: cover;
-            margin: 0 5px;
+            margin: 0 10px;
+        }
+        @keyframes scrolling {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-66.66%);
+            }
         }
     </style>
 </head>
@@ -232,9 +246,11 @@
     </main>
     <div class="banner" id="dynamic-banner">
         <span>Nos Chouchous :</span>
-        <img id="banner-image-1" src="" alt="Image 1">
-        <img id="banner-image-2" src="" alt="Image 2">
-        <img id="banner-image-3" src="" alt="Image 3">
+        <div class="banner-content">
+            <img src="https://media.licdn.com/dms/image/v2/C4D03AQGjPIXw8SQjpQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1646234300085?e=1748476800&v=beta&t=MDXOTK7PoPIwgWfQKZXRdNp1pPDJCmbSbIUOmTnthNQ" alt="Gautier">
+            <img src="https://media.licdn.com/dms/image/v2/D4E03AQEzrxVyDeD5Tw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1682360050580?e=1749081600&v=beta&t=l8VwBftupthcoYJF_RTaQ1D3QhFAZ_2b8F2yzCG_6D8" alt="Alban">
+            <img src="https://media.licdn.com/dms/image/v2/D4E03AQGHw2jZmQ-WBA/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1698047557143?e=1749081600&v=beta&t=3jBusMZC9AUUbDMdjBN9l_a9SHPm9ZnlCPn3JGoDIbg" alt="Pierre">
+        </div>
     </div>
     <script>
         let currentDropdown = null;
@@ -287,23 +303,6 @@
                 currentDropdown = null;
             }
         }
-
-        // Dynamic banner setup
-        const bannerImages = [
-            { src: "https://media.licdn.com/dms/image/v2/C4D03AQGjPIXw8SQjpQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1646234300085?e=1748476800&v=beta&t=MDXOTK7PoPIwgWfQKZXRdNp1pPDJCmbSbIUOmTnthNQ", alt: "Gautier" },
-            { src: "https://media.licdn.com/dms/image/v2/D4E03AQEzrxVyDeD5Tw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1682360050580?e=1749081600&v=beta&t=l8VwBftupthcoYJF_RTaQ1D3QhFAZ_2b8F2yzCG_6D8", alt: "Alban" },
-            { src: "https://media.licdn.com/dms/image/v2/D4E03AQGHw2jZmQ-WBA/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1698047557143?e=1749081600&v=beta&t=3jBusMZC9AUUbDMdjBN9l_a9SHPm9ZnlCPn3JGoDIbg", alt: "Pierre" }
-        ];
-
-        function updateBannerImages() {
-            for (let i = 0; i < 3; i++) {
-                const imgElement = document.getElementById(`banner-image-${i + 1}`);
-                imgElement.src = bannerImages[i].src;
-                imgElement.alt = bannerImages[i].alt;
-            }
-        }
-
-        updateBannerImages();
     </script>
 </body>
 </html>
